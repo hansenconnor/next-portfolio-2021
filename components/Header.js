@@ -15,15 +15,16 @@ import {
 
 function Header({ Component, pageProps }) {
   const [open, set] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const [currentRoute, setCurrentRoute] = useState("");
   const router = useRouter();
   const styles = useSpring({
     from: {
-      scrollY: "100vh",
+      y: "-100vh",
       opacity: 0,
     },
     to: {
-      y: open ? "0vh" : "100vh",
+      y: open ? "0vh" : "-100vh",
       opacity: open ? 1 : 0,
     },
   });
@@ -38,16 +39,17 @@ function Header({ Component, pageProps }) {
 
   useEffect(() => {
     // After the route is done loading or the route is the same, toggle the menu var
+    // TODO: CLean these up - probably leaking
     router.events.on('routeChangeComplete', () => {
-        set((open) => !open)
+      set((open) => !open)
     })
     router.events.on('hashChangeComplete', () => {
       set((open) => !open);
     });
 
     return () => {
-        router.events.off('hashChangeComplete')
-      }
+      router.events.off('hashChangeComplete')
+    }
   }, []);
   //   useEffect(() => {
 
@@ -57,18 +59,20 @@ function Header({ Component, pageProps }) {
   return (
     <header className="fixed w-full z-10">
       <div className="w-full flex flex-row items-center px-12 py-8">
-        <Image src={Logo} layout="fixed" alt="logo"></Image>
+        <Image src={Logo} alt="hvnsen logo"></Image>
         <div
-          className="menu-toggle-container ml-auto z-20 cursor-pointer"
+          className="menu-toggle-container ml-auto z-20 cursor-pointer w-6  h-4 block relative"
           onClick={() => set((open) => !open)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <animated.span
             style={hamburgerStyles}
-            className={`h-0.5 w-6 block`}
+            className={`h-0.5 transition-all ease-in-out ${hovered ? 'w-1/2' : 'w-full'} absolute top-0 right-0 block`}
           ></animated.span>
           <animated.span
             style={hamburgerStyles}
-            className={`h-0.5 w-6 block mt-2`}
+            className={`h-0.5 transition-all ease-in-out ${hovered ? 'w-full' : 'w-1/2'} block absolute bottom-0`}
           ></animated.span>
         </div>
       </div>

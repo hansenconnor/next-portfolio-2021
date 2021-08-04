@@ -21,4 +21,6 @@ function MyApp({ Component, pageProps, router }) {
   );
 }
 
+console.log('%c Made by hvnsen → https://twitter.com/connorhvnsen', 'background: black; color: white; padding: 1ch 2ch; border-radius: 2rem;')
+
 export default MyApp;
