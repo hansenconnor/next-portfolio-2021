@@ -80,35 +80,35 @@ function Header({ Component, pageProps }) {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Link href="/about">
-              <a className="text-white text-8xl">About</a>
+              <a className="text-white text-5xl md:text-8xl">About</a>
             </Link>
             <a
               href="https://instagram.com/connorcodes"
               target="_blank"
               rel="noreferrer"
-              className="text-white text-8xl hover:text-red-500"
+              className="text-white text-5xl md:text-8xl hover:text-red-500"
             >
               Insta
             </a>
             <Link href="/">
-              <a className="text-white text-8xl">Work</a>
+              <a className="text-white text-5xl md:text-8xl">Work</a>
             </Link>
             <a
               href="https://twitter.com/connorhvnsen"
               target="_blank"
               rel="noreferrer"
-              className="text-white text-8xl hover:text-blue-500"
+              className="text-white text-5xl md:text-8xl hover:text-blue-500"
             >
               Twitter
             </a>
             <Link href="/blog" target="_blank">
-              <a className="text-white text-8xl">Blog</a>
+              <a className="text-white text-5xl md:text-8xl">Blog</a>
             </Link>
             <a
               href="https://github.com/hansenconnor"
               target="_blank"
               rel="noreferrer"
-              className="text-white text-8xl hover:text-green-500"
+              className="text-white text-5xl md:text-8xl hover:text-green-500"
             >
               GitHub
             </a>
