@@ -36,7 +36,7 @@ function Sphere() {
 
 export default function Home() {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Connor Hansen</title>
         <meta name="description" content="Neon Mode Designer ✣ Creative Director ✣ Fashion Photographer" />
@@ -61,11 +61,11 @@ export default function Home() {
       </section>
 
 
-      <section className="flex items-center h-screen" style={{ paddingLeft: "2.5vw", paddingRight: "2.5vw"}}>
+      <section className="flex items-center" style={{ paddingLeft: "2.5vw", paddingRight: "2.5vw", paddingBottom: "20vw"}}>
         <Image src={gallery} layout={"intrinsic"} className="bg-gray-100"></Image>
       </section>
 
-      <section className="flex items-center justify-center h-screen">
+      <section className="flex items-center justify-center" style={{ paddingBottom: "20vw" }}>
         <p className="text-3xl leading-relaxed lg:w-5/6">
           Connor Hansen is a self-taught designer working at the intersection of digital product and brand identity.
           <br></br><br></br>
@@ -85,6 +85,6 @@ export default function Home() {
       {/* <Image src={gallery} layout={"fill"} objectFit={"cover"}></Image> */}
 
       <footer></footer>
-    </>
+    </Layout>
   );
 }

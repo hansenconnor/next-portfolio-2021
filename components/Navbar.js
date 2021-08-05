@@ -29,11 +29,10 @@ function Header({ Component, pageProps }) {
     onChange(opacity) {
       // TODO: FIX THESE
       console.log(opacity.value.opacity);
-      if (opacity.value.opacity == 1) {
-        setMenuVisible(true)
-      }
       if (opacity.value.opacity == 0) {
         setMenuVisible(false)
+      } else {
+        setMenuVisible(true)
       }
     }
   });
@@ -61,6 +60,7 @@ function Header({ Component, pageProps }) {
 
     return () => {
       router.events.off('hashChangeComplete')
+      router.events.off('routeChangeComplete')
     }
   }, []);
   //   useEffect(() => {

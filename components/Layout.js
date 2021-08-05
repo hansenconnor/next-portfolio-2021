@@ -1,51 +1,32 @@
-import React from 'react'
+import React from "react";
 // import { NextSeo } from 'next-seo'
-import { motion } from 'framer-motion'
-import Navbar from './Navbar'
-import { useEffect } from 'react'
-
-
-
-
+import { motion } from "framer-motion";
+import Navbar from "./Navbar";
+import { useEffect } from "react";
 
 const Layout = (props) => {
-    
-    const scrollRef = React.createRef();
-    const variants = {
-        hidden: { opacity: 0, x: 0, y: -100 },
-        enter: { opacity: 1, x: 0, y: 0 },
-        exit: { opacity: 0, x: 0, y: -100 },
-    }
+  const scrollRef = React.createRef();
+  const variants = {
+    hidden: { opacity: 0, x: 0, y: 100 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: 0 },
+  };
 
-    // useEffect(() => {
-    //     if (typeof window === "undefined") {
-    //         return;
-    //     }
-    //     const scroll = import("locomotive-scroll").then((LocomotiveScroll) => {
-    //         new LocomotiveScroll.default({
-    //           el: scrollRef.current,
-    //           smooth: true
-    //         });
-    //       });
+  return (
+    <>
+      {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
 
-    //     return () => scroll.destroy();
-    // }, []);
+      <motion.main
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+        transition={{ type: "linear" }}
+      >
+        {props.children}
+      </motion.main>
+    </>
+  );
+};
 
-    return (
-        <div className="scroll" ref={scrollRef}>
-            {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
-            <Navbar></Navbar>
-            <motion.main
-                initial="hidden"
-                animate="enter"
-                exit="exit"
-                variants={variants}
-                transition={{ type: 'linear' }}
-            >
-                {props.children}
-            </motion.main>
-        </div>
-    )
-}
-
-export default Layout
+export default Layout;
