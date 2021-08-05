@@ -5,17 +5,17 @@ import Navbar from './Navbar'
 import { useEffect } from 'react'
 
 
-const variants = {
-    hidden: { opacity: 0, x: 0, y: -100 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
-}
 
 
 
 const Layout = (props) => {
-
+    
     const scrollRef = React.createRef();
+    const variants = {
+        hidden: { opacity: 0, x: 0, y: -100 },
+        enter: { opacity: 1, x: 0, y: 0 },
+        exit: { opacity: 0, x: 0, y: -100 },
+    }
 
     // useEffect(() => {
     //     if (typeof window === "undefined") {
