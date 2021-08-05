@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import Image from "next/image";
-import Header from "../components/Header";
+import Header from "../components/Navbar";
 import { useSpring, animated, config } from "react-spring";
 import Layout from "../components/Layout";
 import gallery from "../public/gallery.png"
+import { useEffect } from "react"
 
 function Sphere() {
   const styles = useSpring({
@@ -41,74 +42,41 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Parallax style={{background: "black"}} pages={3} className="h-full flex flex-col">
-        <ParallaxLayer offset={0} style={{background: "red"}}>
-
-        </ParallaxLayer>
-        <ParallaxLayer offset={1} style={{background: "green"}}>
-
-        </ParallaxLayer>
-        <ParallaxLayer offset={2} style={{background: "blue"}}>
-
-        </ParallaxLayer>
-      </Parallax> */}
-
-
-      <Parallax pages={3} config={config.molasses} className="h-full flex flex-col">
-
-        
-
-        {/* First Section */}
-
-        <ParallaxLayer
-          offset={0}
-          speed={0}
-          style={{ backgroundColor: "#FFF" }}>
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={0.6} speed={-0.4} className="z-0">
-          <div className="absolute left-1/3">
-            <Sphere></Sphere>
-          </div>
-        </ParallaxLayer>
-        <ParallaxLayer offset={0.4} speed={-0.6}>
-          <div className="container mx-auto">
-            <h3 className="text-2xl w-11/12 sm:w-11/12 sm:text-3xl sm:leading-relaxed leading-normal md:text-4xl md:w-11/12 lg:w-5/6 md:leading-normal text-gray-600">
-              Combining{" "}
-              <span className="text-gray-900">
-                creativity, technology, design and strategy
+      <section className="flex items-center h-screen px">
+        <h3 className="text-2xl sm:w-11/12 sm:text-3xl sm:leading-relaxed leading-normal md:text-4xl md:w-11/12 lg:w-5/6 md:leading-normal text-gray-600">
+          Combining{" "}
+          <span className="text-gray-900">
+            creativity, technology, design and strategy
               </span>{" "}
               to help brands{" "}
-              <span className="text-gray-900">exceed their goals</span> and
+          <span className="text-gray-900">exceed their goals</span> and
               ultimately{" "}
-              <span className="text-gray-900">build better businesses</span>.
+          <span className="text-gray-900">build better businesses</span>.
             </h3>
-          </div>
-        </ParallaxLayer>
+      </section>
 
 
+      <section className="flex items-center h-screen">
+        <Image src={gallery} layout={"intrinsic"}></Image>
+      </section>
 
-        {/* Second Section */}
-        <ParallaxLayer
-          offset={1}
-          speed={0}
-          style={{ backgroundColor: "#FAFAFA" }}>
-        </ParallaxLayer>
+      <section className="flex items-center h-screen">
+        <p class="text-3xl leading-relaxed">
+        Connor Hansen is an award-winning designer working at the intersection of digital product and brand identity.
+          <br></br><br></br>
+          He has curated concept works for products and experiences loved by millions. These include Spotify, Gucci, Nike, IBM, Louis Vuitton and more.
+          <br></br><br></br>
+          Currently, he guides creative at HealthBridge.
+          <br></br><br></br>
+          Full bio here
+        </p>
+      </section>
 
-        <ParallaxLayer offset={1.1} speed={0} style={{ backgroundColor: "#F0F0F0", width: "80%", height: "80vh", margin: "0 auto", overflow: "hidden" }}>
-          <ParallaxLayer factor={1.2} offset={0} speed={0.25} style={{ backgroundColor: "#F0F0F0" }}>
-            <Image src={gallery} layout={"fill"} objectFit={"cover"}></Image>
-          </ParallaxLayer>
-        </ParallaxLayer>
+      {/* <div className="absolute left-1/3">
+            <Sphere></Sphere>
+          </div> */}
 
-        {/* Third Section */}
-        <ParallaxLayer
-          offset={2}
-          speed={0}
-          style={{ backgroundColor: "#FFF" }}>
-        </ParallaxLayer>
-        
-      </Parallax>
+      {/* <Image src={gallery} layout={"fill"} objectFit={"cover"}></Image> */}
 
       <footer></footer>
     </>

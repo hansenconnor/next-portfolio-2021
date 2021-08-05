@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 // import { NextSeo } from 'next-seo'
 import { motion } from 'framer-motion'
-import Header from '../components/Header'
+import Navbar from './Navbar'
+import { useEffect } from 'react'
 
 
 const variants = {
@@ -10,21 +11,41 @@ const variants = {
     exit: { opacity: 0, x: 0, y: -100 },
 }
 
-const Layout = ({ children, title, description }) => (
-    <div>
-        {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
-        <Header></Header>
-        <motion.main
-            initial="hidden"
-            animate="enter"
-            exit="exit"
-            variants={variants}
-            transition={{ type: 'linear' }}
-            className="flex flex-col items-start w-full h-screen"
+
+
+const Layout = (props) => {
+
+    const scrollRef = React.createRef();
+
+    // useEffect(() => {
+    //     if (typeof window === "undefined") {
+    //         return;
+    //     }
+    //     const scroll = import("locomotive-scroll").then((LocomotiveScroll) => {
+    //         new LocomotiveScroll.default({
+    //           el: scrollRef.current,
+    //           smooth: true
+    //         });
+    //       });
+
+    //     return () => scroll.destroy();
+    // }, []);
+
+    return (
+        <div className="scroll" ref={scrollRef}>
+            {/* <NextSeo title={title} description={description} openGraph={{ title, description }} /> */}
+            <Navbar></Navbar>
+            <motion.main
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                variants={variants}
+                transition={{ type: 'linear' }}
             >
-            {children}
-        </motion.main>
-    </div>
-)
+                {props.children}
+            </motion.main>
+        </div>
+    )
+}
 
 export default Layout

@@ -58,7 +58,7 @@ function Header({ Component, pageProps }) {
 
   return (
     <header className="fixed w-full z-10">
-      <div className="w-full flex flex-row items-center px-12 py-8">
+      <section className="w-full flex flex-row items-center py-8">
         <Image src={Logo} alt="hvnsen logo"></Image>
         <div
           className="menu-toggle-container ml-auto z-20 cursor-pointer w-6  h-4 block relative"
@@ -75,7 +75,7 @@ function Header({ Component, pageProps }) {
             className={`h-0.5 transition-all ease-in-out ${hovered ? 'w-full' : 'w-1/2'} block absolute bottom-0`}
           ></animated.span>
         </div>
-      </div>
+      </section>
 
       <animated.div
         style={styles}

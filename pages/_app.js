@@ -1,11 +1,13 @@
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import { animated, Transition } from "react-spring";
-import Header from "../components/Header";
+import Header from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "../components/Layout"
+import React, { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, router }) {
+
   return (
     <>
       <Layout>
