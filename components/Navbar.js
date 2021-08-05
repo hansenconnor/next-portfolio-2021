@@ -15,19 +15,31 @@ import {
 
 function Header({ Component, pageProps }) {
   const [open, set] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [currentRoute, setCurrentRoute] = useState("");
   const router = useRouter();
   const styles = useSpring({
     from: {
-      y: "-100vh",
       opacity: 0,
     },
     to: {
-      y: open ? "0vh" : "-100vh",
       opacity: open ? 1 : 0,
     },
+    onChange(opacity) {
+      // TODO: FIX THESE
+      console.log(opacity.value.opacity);
+      if (opacity.value.opacity == 1) {
+        setMenuVisible(true)
+      }
+      if (opacity.value.opacity == 0) {
+        setMenuVisible(false)
+      }
+    }
   });
+
+
+  // TODO: Chain styles for nav overlay
 
   const hamburgerStyles = useSpring({
     config: config.molasses,
@@ -57,7 +69,7 @@ function Header({ Component, pageProps }) {
   //   }, [router.pathName]);
 
   return (
-    <header className="fixed w-full z-10">
+    <header className="fixed w-full z-20">
       <section className="w-full flex flex-row items-center py-8">
         <Image src={Logo} alt="hvnsen logo"></Image>
         <div
@@ -79,7 +91,7 @@ function Header({ Component, pageProps }) {
 
       <animated.div
         style={styles}
-        className={`h-screen w-full bg-black absolute left-0 top-0 flex items-center`}
+        className={`h-screen w-full bg-black absolute left-0 top-0 flex items-center ${menuVisible == false ? 'hidden' : 'visible'}`}
       >
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
